@@ -313,7 +313,7 @@ def roc_plot(tpr, fpr, coordinator_score, out_filepath, color = False):
     axes.set_ylim([-0.008, 1.008])
     axes.set_xlabel('False Positive Rate')
     axes.set_ylabel('True Positive Rate')
-    axes.set_title('AUC = %.3f' % auc)
+    axes.set_title('{} (AUC = %.3f)'.format(type_predictor.upper()) % auc)
     matplotlib.pyplot.savefig(out_filepath)
 
 def roc_plot_together(list_tpr, list_fpr, labels, out_filepath):
