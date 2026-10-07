@@ -67,6 +67,10 @@ def parse_blosum(path):
 
             # For the dictionary of the i-th AA key of blosum_dict, store the j-th AA as a key and the score as a value:
             # blosum_dict... = ...
+    for i in range(len(aas)):
+        for j in range(len(aa_scores[i])):
+            score = aa_scores[i][j]
+            blosum_dict[aas[i]][aas[j]] = score
 
     #########################
     ###  END CODING HERE  ###
@@ -107,6 +111,9 @@ def parse_vep(path):
                 # Have a look at vars to see how AAs can be separated from the string and think
                 # which string method you could use.
                 # Append the retrieved reference and mutation amino acids to the respective lists
+                # vars looks like "N/K": vars[0] is the reference AA and vars[2] is the mutated AA
+                ref_aas.append(vars[0])
+                mut_aas.append(vars[2])
 
                 #########################
                 ###  END CODING HERE  ###
@@ -142,6 +149,11 @@ def run_baseline(hgvs_ids, ref_aas, mut_aas, blosum_dict):
         # score = ...
 
         # Append the score to scores
+    for i in range(len(hgvs_ids)):
+        ref_aa = ref_aas[i]
+        mut_aa = mut_aas[i]
+        score = blosum_dict[ref_aa][mut_aa]
+        scores.append(score)
 
     #########################
     ###  END CODING HERE  ###
